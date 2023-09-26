@@ -152,7 +152,7 @@ img {
     background: #f8f8f8 !important;
 }
 .parallax {
-  background-image: url("../forest_run.png");
+  background-image: url("../../resources/css/forest_run.png");
 
     /* Set a specific height */
     min-height: 960px;
