@@ -98,4 +98,5 @@
     <footer class="footer">
         <p style="font-size: 12px; margin: 0; padding: 10px 1em;">iliya LTD.</p>
     </footer>
+</div>
 </body>
