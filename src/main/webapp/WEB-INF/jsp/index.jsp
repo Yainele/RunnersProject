@@ -1,26 +1,99 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<!DOCTYPE html>
+<html lang="en">
 
-<!DOCTYPE HTML>
-<html>
 <head>
-  <title>Главная</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="src/main/webapp/resources/css/style.css">
 </head>
+
 <body>
-<div>
-  <h3>${pageContext.request.userPrincipal.name}</h3>
-  <sec:authorize access="!isAuthenticated()">
-    <h4><a href="/login">Войти</a></h4>
-    <h4><a href="/registration">Зарегистрироваться</a></h4>
-  </sec:authorize>
-  <sec:authorize access="isAuthenticated()">
-    <h4><a href="/logout">Выйти</a></h4>
-  </sec:authorize>
-  <h4><a href="/news">Новости (только пользователь)</a></h4>
-  <h4><a href="/admin">Пользователи (только админ)</a></h4>
+
+<div class="content-wrapper">
+    <header class="header">
+        <p style="font-size: 30px; margin: 0; padding: 10px 1em;">100km</p>
+    </header>
+    <main>
+        <div class="wrapper">
+            <div class="wrapper parallax">
 </div>
+        <section class="model">
+            <div class="what_is">
+                <div class="card">
+                    <div class="card-content">
+                        <h2>Что это?</h2>
+                        <p> description</p>
+                        <a href="#">Read More</a>
+                    </div>
+                    <div class="card-content">
+                        <img src="./runner.png" alt="Описание изображения">
+                    </div>
+                </div>
+            </div>
+            <div class="sign_up">
+                <div class="card_sign_up">
+                    <div class="card-content">
+                        <h2>Принять участие</h2>
+                        <p> description</p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+                <div class="card_sign_up">
+                    <div class="card-content">
+                        <h2>Выбрать дату</h2>
+                        <p> description</p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+                <div class="card_sign_up">
+                    <div class="card-content">
+                        <h2>Группа поддержки</h2>
+                        <p> description</p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tournament">
+                <div class="card_tour">
+                    <div class="card-content">
+                         <p style="font-size: 20px; margin: 0; padding: 10px 1em; position: center">Таблица лидеров</p>
+                        <table class="table">
+                        <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Nick</th>
+                            <th>Birthday</th>
+                            <th>Time</th>
+                            <th>Long</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Илья</td>
+                            <td>Тепляков</td>
+                            <td>seriousnuts</td>
+                            <td>16/02/2000</td>
+                            <td>999 часов</td>
+                            <td>2 км</td>
+                        </tr>
+                        <tr>
+                            <td>Евгения</td>
+                            <td>Семенова</td>
+                            <td>prokanaktis</td>
+                            <td>28/07/2000</td>
+                            <td>999 часов</td>
+                            <td>1 км</td>
+                        </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+    </main>
+    <footer class="footer">
+        <p style="font-size: 12px; margin: 0; padding: 10px 1em;">iliya LTD.</p>
+    </footer>
 </body>
-</html>
