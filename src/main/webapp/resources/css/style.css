@@ -1,7 +1,165 @@
-table {
-    border-collapse: collapse;
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 400px;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    padding: 20px;
+    display: flex;
+    margin: 20px;
 }
 
-table, th, td {
-    border: 1px solid black;
+.card_sign_up {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 200px;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    padding: 20px;
+    display: flex;
+    margin: 20px;
+}
+
+.card_tour {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: auto;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    padding: 20px;
+    display: flex;
+    margin: 20px;
+}
+
+.card img {
+    width: 100px;
+    margin-left: 10px;
+
+}
+
+.card-content img {
+
+}
+
+.card-content {
+    padding: 20px;
+    margin-left: 30px;
+}
+
+.card-content h2 {
+    margin-top: 0;
+}
+
+.card-content p {
+    margin-bottom: 0;
+}
+
+.card-content a {
+    display: block;
+    margin-top: 20px;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+    background-color: rgb(246, 247, 248);
+}
+
+.header {
+    height: 100px;
+    background: #000;
+    color: #fff;
+}
+
+.footer {
+    height: 80px;
+    background-color: rgb(1, 4, 9);
+    color: #fff;
+    position: flex;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.sign_up {
+    display: flex;
+    justify-content: space-around;
+}
+
+.what_is {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+
+
+}
+
+.tournament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+}
+
+img {
+    float: left;
+    margin-left: 10px; /* add some margin to the left of the image to separate it from the text */
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 20px;
+    border: 5px solid #fff;
+    border-top: 5px solid #fff;
+    border-bottom: 3px solid #fff;
+    border-collapse: collapse;
+    outline: 3px solid #716b6b;
+    font-size: 15px;
+    background: #fff !important;
+}
+
+.table th {
+    font-weight: bold;
+    padding: 7px;
+    background: #716b6b;
+    border: none;
+    text-align: left;
+    font-size: 15px;
+    border-top: 3px solid #fff;
+    border-bottom: 3px solid #716b6b;
+}
+
+.table td {
+    padding: 7px;
+    border: none;
+    border-top: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    font-size: 15px;
+}
+
+.table tbody tr:nth-child(even) {
+    background: #f8f8f8 !important;
+}
+.parallax {
+  background-image: url("../forest_run.png");
+
+    /* Set a specific height */
+    min-height: 960px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
