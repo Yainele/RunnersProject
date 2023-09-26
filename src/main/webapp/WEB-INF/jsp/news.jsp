@@ -27,7 +27,7 @@
                             <a href="#">Read More</a>
                         </div>
                         <div class="card-content">
-                            <img src="../../resources/css/runner.png"Описание изображения">
+                            <img src="../../resources/css/runner.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                 <div class="tournament">
                     <div class="card_tour">
                         <div class="card-content">
-                            <p style="font-size: 20px; margin: 0; padding: 10px 1em; position: center">Таблица лидеров</p>
+                            <p style="font-size: 20px; margin: 0; padding: 10px 1em">Таблица лидеров</p>
                             <table class="table">
                                 <thead>
                                 <tr>
@@ -100,3 +100,4 @@
     </footer>
 </div>
 </body>
+</html>
