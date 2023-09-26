@@ -1,0 +1,1 @@
+CREATE TABLE runner ( id INT, name VARCHAR(30));
