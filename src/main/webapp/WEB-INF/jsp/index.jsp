@@ -9,7 +9,9 @@
     <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style.css">
 </head>
 <body>
-<div>
+<%@ include file="header.jsp" %>
+
+<div class="content-wrapper">
     <h3>${pageContext.request.userPrincipal.name}</h3>
     <sec:authorize access="!isAuthenticated()">
         <h4><a href="/login">Войти</a></h4>
@@ -21,5 +23,6 @@
     <h4><a href="/news">Новости (только пользователь)</a></h4>
     <h4><a href="/admin">Пользователи (только админ)</a></h4>
 </div>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

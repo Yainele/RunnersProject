@@ -13,9 +13,7 @@
 <body>
 
 <div class="content-wrapper">
-    <header class="header">
-        <p style="font-size: 30px; margin: 0; padding: 10px 1em;">100km</p>
-    </header>
+    <%@ include file="header.jsp" %>
     <main>
         <div class="wrapper">
             <div class="wrapper parallax">
@@ -97,9 +95,7 @@
             </section>
         </div>
     </main>
-    <footer class="footer">
-        <p style="font-size: 12px; margin: 0; padding: 10px 1em;">iliya LTD.</p>
-    </footer>
+    <%@ include file="footer.jsp" %>
 </div>
 </body>
 </html>
