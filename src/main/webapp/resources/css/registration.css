@@ -1,15 +1,43 @@
-
-.card {
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    width: 400px;
-    background-color: rgb(255, 255, 255);
-    align-items: center;
-    padding: 20px;
-    display: flex;
-    text-align: center;
-    margin: 10px;
+@media all and (max-width: 480px) {
+    .card{
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(255, 255, 255);
+        align-items: center;
+        padding: 10px;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        margin: 10px;
+    }
+    .card-content {
+        display: block;
+        margin: 20px;
+        padding: 20px;
+    }
+}
+@media screen and (min-width: 480px){
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        width: 400px;
+        background-color: rgb(255, 255, 255);
+        align-items: center;
+        padding: 20px;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        margin: 10px;
+    }
+    .card-content {
+        display: block;
+        margin: 20px;
+        padding: 20px;
+    }
 }
 .sign_up {
     padding: 20px;
@@ -52,11 +80,7 @@ html body{
     width: 100%;
     overflow: hidden;
 }
-.card-content {
-    display: block;
-    margin: 20px;
-    padding: 20px;
-}
+
 .username{
     margin: 35px;
 }

@@ -1,21 +1,119 @@
+@media all and (max-width: 480px) {
+    .card_sign_up {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        width: 2000px;
+        background-color: rgb(255, 255, 255);
+        align-items: center;
+        padding: 10px;
+        display: flex;
+    }
+    .what_is {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px;
+    }
+    .sign_up {
+        display: block;
+        justify-content: space-around;
+    }
+    .parallax {
+        background-image: url("../../resources/css/forest_run.png");
 
+        /* Set a specific height */
+        min-height: 960px;
+        width: 100%;
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .card-content img {
+
+    }
+
+    .card-content {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .card-content h2 {
+        margin-top: 0;
+    }
+
+    .card-content p {
+        margin-bottom: 0;
+    }
+
+    .card-content a {
+        display: block;
+        margin-top: 20px;
+    }
+}
+@media screen and (min-width: 480px){
+    .card_sign_up {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        width: 200px;
+        background-color: rgb(255, 255, 255);
+        align-items: center;
+        padding: 20px;
+        display: block;
+        margin: 20px;
+    }
+    .what_is {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 30px;
+    }
+    .sign_up {
+        display: flex;
+        justify-content: space-around;
+    }
+    .parallax {
+        background-image: url("../../resources/css/forest_run.png");
+
+        /* Set a specific height */
+        min-height: 960px;
+
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .card-content img {
+
+    }
+
+    .card-content {
+        padding: 20px;
+        margin-left: 30px;
+    }
+
+    .card-content h2 {
+        margin-top: 0;
+    }
+
+    .card-content p {
+        margin-bottom: 0;
+    }
+
+    .card-content a {
+        display: block;
+        margin-top: 20px;
+    }
+}
 .card {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     width: 400px;
-    background-color: rgb(255, 255, 255);
-    align-items: center;
-    padding: 20px;
-    display: flex;
-    margin: 20px;
-}
-
-.card_sign_up {
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    width: 200px;
     background-color: rgb(255, 255, 255);
     align-items: center;
     padding: 20px;
@@ -41,28 +139,6 @@
 
 }
 
-.card-content img {
-
-}
-
-.card-content {
-    padding: 20px;
-    margin-left: 30px;
-}
-
-.card-content h2 {
-    margin-top: 0;
-}
-
-.card-content p {
-    margin-bottom: 0;
-}
-
-.card-content a {
-    display: block;
-    margin-top: 20px;
-}
-
 html, body {
     height: 100%;
     margin: 0;
@@ -84,25 +160,10 @@ html, body {
     height: 80px;
     background-color: rgb(1, 4, 9);
     color: #fff;
-    position: flex;
     left: 0;
     bottom: 0;
     width: 100%;
     overflow: hidden;
-}
-
-.sign_up {
-    display: flex;
-    justify-content: space-around;
-}
-
-.what_is {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 30px;
-
-
 }
 
 .tournament {
@@ -151,15 +212,4 @@ img {
 .table tbody tr:nth-child(even) {
     background: #f8f8f8 !important;
 }
-.parallax {
-  background-image: url("../../resources/css/forest_run.png");
 
-    /* Set a specific height */
-    min-height: 960px;
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
