@@ -2,9 +2,7 @@
     height: 80px;
     background-color: rgb(1, 4, 9);
     color: #fff;
-    position: absolute;
-    left: 0;
-    bottom: 0;
     width: 100%;
     overflow: hidden;
+    bottom: 0;
 }

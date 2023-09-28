@@ -17,6 +17,7 @@
     <main>
         <div class="wrapper">
             <div class="wrapper parallax">
+
             </div>
             <section class="model">
                 <div class="what_is">
@@ -72,6 +73,7 @@
                                 </thead>
                                 <tbody>
                                 <tr>
+
                                     <td>Илья</td>
                                     <td>Тепляков</td>
                                     <td>seriousnuts</td>
@@ -89,13 +91,18 @@
                                 </tr>
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
+
                 </div>
+
             </section>
+            <footer class="footer">
+                <p style="font-size: 12px; margin: 0; padding: 10px 1em;">iliya LTD.</p>
+            </footer>
         </div>
     </main>
-    <%@ include file="footer.jsp" %>
 </div>
 </body>
 </html>
