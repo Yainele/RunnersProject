@@ -23,10 +23,10 @@
         <c:forEach items="${allDefiniteLocations}" var="loc">
             <tr>
                 <td>${loc.id}</td>
-                <td>${loc.location_name}</td>
-                <td>${loc.location_description}</td>
-                <td>${loc.longitude}</td>
-                <td>${loc.latitude}</td>
+                <td>${loc.getLocationName()}</td>
+                <td>${loc.getLocationDescription()}</td>
+                <td>${loc.getLongitude()}</td>
+                <td>${loc.getLatitude()}</td>
                 <td>
                 </td>
             </tr>

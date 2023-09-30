@@ -33,6 +33,9 @@ public class DefiniteLocation {
         return locationName;
     }
 
+    public DefiniteLocation() {
+    }
+
     public void setLocationName(String locationName) {
         this.locationName = locationName;
     }
