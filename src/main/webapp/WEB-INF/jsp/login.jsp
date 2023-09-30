@@ -19,7 +19,7 @@
             <section class="model">
                 <div class="sign_in">
                     <sec:authorize access="isAuthenticated()">
-                        <% response.sendRedirect("/"); %>
+                        <% response.sendRedirect("news"); %>
                     </sec:authorize>
                     <div class="card">
                         <form method="POST" action="/login">
