@@ -37,7 +37,7 @@
                         <div class="card-content">
                             <h2>Принять участие</h2>
                             <p> description</p>
-                            <a href="#">Read More</a>
+                            <a href="${pageContext.request.contextPath}/event">Read More</a>
                         </div>
                     </div>
                     <div class="card_sign_up">
