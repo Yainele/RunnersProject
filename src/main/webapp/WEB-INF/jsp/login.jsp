@@ -5,15 +5,14 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in with your account</title>
     <link rel="stylesheet" href="../../resources/css/registration.css">
 </head>
 
 <body>
 <div class="content-wrapper">
-    <header class="header">
-        <p style="font-size: 30px; margin: 0; padding: 10px 1em;">100km</p>
-    </header>
+    <%@ include file="header.jsp" %>
     <main>
         <div class="wrapper">
             <section class="model">
@@ -45,9 +44,7 @@
             </section>
         </div>
     </main>
-    <footer class="footer">
-        <p style="font-size: 12px; margin: 0; padding: 10px 1em;">iliya LTD.</p>
-    </footer>
+    <%@ include file="footer.jsp" %>
 </div>
 </body>
 </html>

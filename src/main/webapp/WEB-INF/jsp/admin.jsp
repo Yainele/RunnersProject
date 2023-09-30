@@ -10,7 +10,8 @@
 </head>
 
 <body>
-<div>
+<%@ include file="header.jsp" %>
+<div class="content-wrapper">
   <table>
     <thead>
     <th>ID</th>
@@ -32,13 +33,12 @@
             <input type="hidden" name="action" value="delete"/>
             <button type="submit">Delete</button>
           </form>
-
         </td>
-
       </tr>
     </c:forEach>
   </table>
   <a href="/">Главная</a>
 </div>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

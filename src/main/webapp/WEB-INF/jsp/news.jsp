@@ -6,17 +6,18 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" href="../../resources/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 
 <body>
 
 <div class="content-wrapper">
-    <header class="header">
-        <p style="font-size: 30px; margin: 0; padding: 10px 1em;">100km</p>
-    </header>
+    <%@ include file="header.jsp" %>
     <main>
         <div class="wrapper">
             <div class="wrapper parallax">
+
             </div>
             <section class="model">
                 <div class="what_is">
@@ -72,6 +73,7 @@
                                 </thead>
                                 <tbody>
                                 <tr>
+
                                     <td>Илья</td>
                                     <td>Тепляков</td>
                                     <td>seriousnuts</td>
@@ -89,15 +91,18 @@
                                 </tr>
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
+
                 </div>
+
             </section>
+            <footer class="footer">
+                <p style="font-size: 12px; margin: 0; padding: 10px 1em;">iliya LTD.</p>
+            </footer>
         </div>
     </main>
-    <footer class="footer">
-        <p style="font-size: 12px; margin: 0; padding: 10px 1em;">iliya LTD.</p>
-    </footer>
 </div>
 </body>
 </html>
