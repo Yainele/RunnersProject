@@ -14,7 +14,7 @@ public class LocationController implements LocationInterface {
     @Autowired
     private LocationService locationService;
     @Override
-    @GetMapping()
+    @GetMapping("/news/{locationId}")
     public String getLocation(Long locationId, Model model) {
         model.addAttribute("allLocations", locationService.locationList(locationId));
         return "location";
