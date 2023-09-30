@@ -7,6 +7,7 @@
   <meta charset="utf-8">
   <title>Log in with your account</title>
   <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
