@@ -1,1 +1,0 @@
-CREATE TABLE User_Data ( id INT, name VARCHAR(100));
