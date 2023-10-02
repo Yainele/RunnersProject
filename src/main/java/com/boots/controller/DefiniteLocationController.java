@@ -29,4 +29,10 @@ public class DefiniteLocationController {
         model.addAttribute("LocationForm", DefiniteLocationService.createCustomLocation(locationForm));
         return "/event/createLocation";
     }
+
+    @GetMapping("/event/createLocation")
+    public String customLocation(Model model){
+        model.addAttribute("LocationForm", new DefiniteLocation());
+        return "/event/createLocation";
+    }
 }
