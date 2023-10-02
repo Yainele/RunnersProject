@@ -24,6 +24,13 @@
         <label for="radioButton"></label>
     </div>
         </c:forEach>
+    <div class="card">
+        <div class="card-content">
+            <a href="/create_location">Создать собственную локацию</a>
+        </div>
+        <input type="radio" id="own_location"/>
+        <label for="radioButton"></label>
+    </div>
     <a href="/">Главная</a>
 </div>
 <%@ include file="footer.jsp" %>
