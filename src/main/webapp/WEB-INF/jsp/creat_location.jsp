@@ -19,7 +19,7 @@
         <div class="wrapper">
             <section class="model">
                 <div class="sign_up">
-                    <form:form method="POST" modelAttribute="LocationForm" action="/event/createLocation">
+                    <form:form method="POST" modelAttribute="DefiniteLocation" action="/creat_location">
                     <div class="card">
                         <div class="card-content">
                             <h2>Создать локацию</h2>

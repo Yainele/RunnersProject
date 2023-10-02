@@ -26,7 +26,7 @@
         </c:forEach>
     <div class="card">
         <div class="card-content">
-            <a href="event/creatLocation">Создать собственную локацию</a>
+            <a href="/creat_location">Создать собственную локацию</a>
         </div>
         <input type="radio" id="own_location"/>
         <label for="radioButton"></label>

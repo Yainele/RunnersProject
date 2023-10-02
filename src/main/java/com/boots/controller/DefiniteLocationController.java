@@ -24,15 +24,15 @@ public class DefiniteLocationController {
         model.addAttribute("allDefiniteLocations", DefiniteLocationService.getAllDefiniteLocations());
         return "event";
     }
-    @PostMapping("/event/createLocation")
+    @PostMapping("/creat_location")
     public String createCustomLocation(@ModelAttribute("LocationForm") @Valid DefiniteLocation locationForm, BindingResult bindingResult, Model model) {
-        model.addAttribute("LocationForm", DefiniteLocationService.createCustomLocation(locationForm));
-        return "/event/createLocation";
+        model.addAttribute("DefiniteLocation", DefiniteLocationService.createCustomLocation(locationForm));
+        return "creat_location";
     }
 
-    @GetMapping("/event/createLocation")
+    @GetMapping("/creat_location")
     public String customLocation(Model model){
-        model.addAttribute("LocationForm", new DefiniteLocation());
-        return "/event/createLocation";
+        model.addAttribute("DefiniteLocation", new DefiniteLocation());
+        return "creat_location";
     }
 }
