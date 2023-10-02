@@ -25,15 +25,28 @@ public class DefiniteLocation {
 
     private Double latitude;
 
+    private LocationStatus locationStatus;
+
+    public DefiniteLocation() {}
+
+    public DefiniteLocation(String locationName, String locationDescription, Double longitude, Double latitude, LocationStatus locationStatus) {
+        this.locationName = locationName;
+        this.locationDescription = locationDescription;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.locationStatus = LocationStatus.BASE_LOCATION;
+    }
+
+    public LocationStatus getLocationStatus() {
+        return LocationStatus.USER_LOCATION;
+    }
+
     public Long getId() {
         return id;
     }
 
     public String getLocationName() {
         return locationName;
-    }
-
-    public DefiniteLocation() {
     }
 
     public void setLocationName(String locationName) {
@@ -75,4 +88,5 @@ public class DefiniteLocation {
     public void setId(Long id) {
         this.id = id;
     }
+
 }
