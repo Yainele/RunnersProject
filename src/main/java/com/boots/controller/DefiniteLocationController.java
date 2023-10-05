@@ -28,10 +28,10 @@ public class DefiniteLocationController {
         model.addAttribute("allDefiniteLocations", DefiniteLocationService.getAllDefiniteLocations());
         return "event";
     }
-    @PostMapping("/creat_location")
+    @PostMapping("/creat_location/add_location")
     public String createCustomLocation(@ModelAttribute("LocationForm") @Valid DefiniteLocation locationForm, BindingResult bindingResult, Model model) {
         model.addAttribute("DefiniteLocation", DefiniteLocationService.saveCustomLocation(locationForm));
-        return "creat_location";
+        return "add_location";
     }
 
 

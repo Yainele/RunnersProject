@@ -13,14 +13,14 @@ public class DefiniteLocation {
     @Column(name = "id", nullable = true)
     private Long locationId;
 
-    @Size(min=2,max=250, message = "От 2 до 250 знаков")
+    @Size(min = 2, max = 250, message = "От 2 до 250 знаков")
     private String locationDescription;
 
-    @Type(type="org.hibernate.type.BinaryType")
+    @Type(type = "org.hibernate.type.BinaryType")
     @Column(name = "image")
     private byte[] locationImage;
 
-    @Size(min=2,max=63, message = "От 2 до 63 знаков")
+    @Size(min = 2, max = 63, message = "От 2 до 63 знаков")
     private String locationName;
 
 
@@ -30,31 +30,17 @@ public class DefiniteLocation {
     private Double longitude;
 
 
-
     private LocationStatus locationStatus;
 
-    public DefiniteLocation() {}
-
-
-
-    public LocationStatus getLocationStatus() {
-        return LocationStatus.USER_LOCATION;
+    public DefiniteLocation() {
     }
 
-    public Long getId() {
+    public Long getLocationId() {
         return locationId;
     }
 
-    public void setLocationStatus(LocationStatus locationStatus) {
-        this.locationStatus = locationStatus;
-    }
-
-    public String getLocationName() {
-        return locationName;
-    }
-
-    public void setLocationName(String locationName) {
-        this.locationName = locationName;
+    public void setLocationId(Long locationId) {
+        this.locationId = locationId;
     }
 
     public String getLocationDescription() {
@@ -73,12 +59,12 @@ public class DefiniteLocation {
         this.locationImage = locationImage;
     }
 
-    public Double getLongitude() {
-        return longitude;
+    public String getLocationName() {
+        return locationName;
     }
 
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
     }
 
     public Double getLatitude() {
@@ -89,8 +75,19 @@ public class DefiniteLocation {
         this.latitude = latitude;
     }
 
-    public void setId(Long id) {
-        this.locationId = id;
+    public Double getLongitude() {
+        return longitude;
     }
 
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public LocationStatus getLocationStatus() {
+        return locationStatus;
+    }
+
+    public void setLocationStatus(LocationStatus locationStatus) {
+        this.locationStatus = locationStatus;
+    }
 }
