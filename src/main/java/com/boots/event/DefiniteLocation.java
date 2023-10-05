@@ -1,5 +1,7 @@
 package com.boots.event;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
@@ -8,41 +10,43 @@ import javax.validation.constraints.Size;
 public class DefiniteLocation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
-
-    @Size(min=2,max=63, message = "От 2 до 63 знаков")
-    private String locationName;
+    @Column(name = "id", nullable = true)
+    private Long locationId;
 
     @Size(min=2,max=250, message = "От 2 до 250 знаков")
     private String locationDescription;
 
-    @Lob
-    @Column(name = "locationImage", columnDefinition="BYTEA")
+    @Type(type="org.hibernate.type.BinaryType")
+    @Column(name = "image")
     private byte[] locationImage;
+
+    @Size(min=2,max=63, message = "От 2 до 63 знаков")
+    private String locationName;
+
+
+    private Double latitude;
+
 
     private Double longitude;
 
-    private Double latitude;
+
 
     private LocationStatus locationStatus;
 
     public DefiniteLocation() {}
 
-    public DefiniteLocation(String locationName, String locationDescription, Double longitude, Double latitude, LocationStatus locationStatus) {
-        this.locationName = locationName;
-        this.locationDescription = locationDescription;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.locationStatus = LocationStatus.BASE_LOCATION;
-    }
+
 
     public LocationStatus getLocationStatus() {
         return LocationStatus.USER_LOCATION;
     }
 
     public Long getId() {
-        return id;
+        return locationId;
+    }
+
+    public void setLocationStatus(LocationStatus locationStatus) {
+        this.locationStatus = locationStatus;
     }
 
     public String getLocationName() {
@@ -86,7 +90,7 @@ public class DefiniteLocation {
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.locationId = id;
     }
 
 }

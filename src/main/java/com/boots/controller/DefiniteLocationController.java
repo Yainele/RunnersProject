@@ -18,7 +18,11 @@ import javax.validation.Valid;
 public class DefiniteLocationController {
     @Autowired
     private DefiniteLocationService DefiniteLocationService;
-
+    @GetMapping("/creat_location")
+    public String customLocation(Model model){
+        model.addAttribute("DefiniteLocation", new DefiniteLocation());
+        return "creat_location";
+    }
     @GetMapping("/event")
     public String getLocation(Long locationId, Model model) {
         model.addAttribute("allDefiniteLocations", DefiniteLocationService.getAllDefiniteLocations());
@@ -26,13 +30,9 @@ public class DefiniteLocationController {
     }
     @PostMapping("/creat_location")
     public String createCustomLocation(@ModelAttribute("LocationForm") @Valid DefiniteLocation locationForm, BindingResult bindingResult, Model model) {
-        model.addAttribute("DefiniteLocation", DefiniteLocationService.createCustomLocation(locationForm));
+        model.addAttribute("DefiniteLocation", DefiniteLocationService.saveCustomLocation(locationForm));
         return "creat_location";
     }
 
-    @GetMapping("/creat_location")
-    public String customLocation(Model model){
-        model.addAttribute("DefiniteLocation", new DefiniteLocation());
-        return "creat_location";
-    }
+
 }
