@@ -22,8 +22,10 @@ import java.sql.Driver;
 import java.sql.Statement;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+
 @Service
-public class DefiniteLocationService {
+public class DefiniteLocationService{
     @PersistenceContext
     private  EntityManager em;
 
@@ -33,8 +35,12 @@ public class DefiniteLocationService {
     @Autowired
     UserRepository userRepository;
 
+
     public List<DefiniteLocation> getAllDefiniteLocations(){
-        return em.createQuery("select l from DefiniteLocation l", DefiniteLocation.class)
+        String username = getCurrentUsername();
+        User user = userRepository.findByUsername(username);
+        return em.createQuery("select l from DefiniteLocation l where l.userId = :user_id or l.userId is null", DefiniteLocation.class)
+                .setParameter("user_id", user.getId())
                 .getResultList();
     }
     public String getCurrentUsername() {
@@ -45,7 +51,8 @@ public class DefiniteLocationService {
         String userName = getCurrentUsername();
         definiteLocation.setLocationStatus(LocationStatus.USER_LOCATION);
         definiteLocation.setLocationImage(null);
-        definiteLocation.setUser(Collections.singleton(userRepository.findByUsername(userName)));
+        definiteLocation.setUserId(userRepository.findByUsername(userName));
+
         locationRepository.save(definiteLocation);
         return true;
     }

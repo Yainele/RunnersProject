@@ -33,11 +33,18 @@ public class DefiniteLocation {
     @Type(type = "org.hibernate.type.BinaryType")
     @Column(name = "locationImage")
     private byte[] locationImage;
-    @ManyToMany(mappedBy="locations")
-    private Set<User> user;
+    private Long userId;
 
-    public void setUser(Set<User> user) {
-        this.user = user;
+    public void setUserId(User user) {
+        if(user != null){
+            this.userId = user.getId();
+        }
+
+    }
+
+    public DefiniteLocation(Long locationId, String locationName) {
+        this.locationId = locationId;
+        this.locationName = locationName;
     }
 
     public DefiniteLocation() {

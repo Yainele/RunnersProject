@@ -2,6 +2,8 @@ package com.boots.service;
 
 import com.boots.entity.Role;
 import com.boots.entity.User;
+import com.boots.event.DefiniteLocation;
+import com.boots.repository.LocationRepository;
 import com.boots.repository.RoleRepository;
 import com.boots.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ public class UserService implements UserDetailsService {
     private EntityManager em;
     @Autowired
     UserRepository userRepository;
+
     @Autowired
     RoleRepository roleRepository;
     @Autowired

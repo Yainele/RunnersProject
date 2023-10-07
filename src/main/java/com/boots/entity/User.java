@@ -23,8 +23,6 @@ public class User implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<DefiniteLocation> locations;
 
     public User() {
     }
@@ -90,10 +88,6 @@ public class User implements UserDetails {
 
     public Set<Role> getRoles() {
         return roles;
-    }
-
-    public void setLocations(Set<DefiniteLocation> locations) {
-        this.locations = locations;
     }
 
     public void setRoles(Set<Role> roles) {
