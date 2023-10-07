@@ -18,9 +18,11 @@ import javax.validation.Valid;
 public class DefiniteLocationController {
     @Autowired
     private DefiniteLocationService DefiniteLocationService;
+
     @GetMapping("/creat_location")
     public String customLocation(Model model){
-        model.addAttribute("DefiniteLocation", new DefiniteLocation());
+        DefiniteLocation definiteLocation = new DefiniteLocation();
+        model.addAttribute("DefiniteLocation", definiteLocation);
         return "creat_location";
     }
     @GetMapping("/event")

@@ -1,12 +1,12 @@
 package com.boots.entity;
 
+import com.boots.event.DefiniteLocation;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.Collection;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "t_user")
@@ -22,6 +22,9 @@ public class User implements UserDetails {
     private String passwordConfirm;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<DefiniteLocation> locations;
 
     public User() {
     }
@@ -87,6 +90,10 @@ public class User implements UserDetails {
 
     public Set<Role> getRoles() {
         return roles;
+    }
+
+    public void setLocations(Set<DefiniteLocation> locations) {
+        this.locations = locations;
     }
 
     public void setRoles(Set<Role> roles) {

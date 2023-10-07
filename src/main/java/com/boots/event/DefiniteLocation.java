@@ -1,36 +1,44 @@
 package com.boots.event;
 
+import com.boots.entity.User;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "t_DefiniteLocation")
 public class DefiniteLocation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = true)
+    @Column(name = "id", nullable = false)
     private Long locationId;
-
-    @Size(min = 2, max = 250, message = "От 2 до 250 знаков")
-    private String locationDescription;
-
-    @Type(type = "org.hibernate.type.BinaryType")
-    @Column(name = "image")
-    private byte[] locationImage;
 
     @Size(min = 2, max = 63, message = "От 2 до 63 знаков")
     private String locationName;
 
-
-    private Double latitude;
-
+    @Size(min = 2, max = 250, message = "От 2 до 250 знаков")
+    private String locationDescription;
 
     private Double longitude;
 
+    private Double latitude;
 
     private LocationStatus locationStatus;
+
+    @Type(type = "org.hibernate.type.BinaryType")
+    @Column(name = "locationImage")
+    private byte[] locationImage;
+    @ManyToMany(mappedBy="locations")
+    private Set<User> user;
+
+    public void setUser(Set<User> user) {
+        this.user = user;
+    }
 
     public DefiniteLocation() {
     }

@@ -5,7 +5,10 @@ import com.boots.entity.User;
 import com.boots.event.DefiniteLocation;
 import com.boots.event.LocationStatus;
 import com.boots.repository.LocationRepository;
+import com.boots.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
@@ -27,19 +30,22 @@ public class DefiniteLocationService {
     @Autowired
     LocationRepository locationRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
     public List<DefiniteLocation> getAllDefiniteLocations(){
         return em.createQuery("select l from DefiniteLocation l", DefiniteLocation.class)
                 .getResultList();
     }
-
+    public String getCurrentUsername() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return auth.getName();
+    }
     public boolean saveCustomLocation(DefiniteLocation definiteLocation) {
-
-        DefiniteLocation location = locationRepository.findByLocationName(definiteLocation.getLocationName());
-        if (location != null) {
-            return false;
-        }
+        String userName = getCurrentUsername();
         definiteLocation.setLocationStatus(LocationStatus.USER_LOCATION);
         definiteLocation.setLocationImage(null);
+        definiteLocation.setUser(Collections.singleton(userRepository.findByUsername(userName)));
         locationRepository.save(definiteLocation);
         return true;
     }
