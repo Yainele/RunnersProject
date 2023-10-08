@@ -13,6 +13,7 @@
 <body>
 <%@ include file="header.jsp" %>
 <div class="content-wrapper">
+    <form:form method="POST" modelAttribute="race_form">
     <div class="pick-location">
     <c:forEach items="${allDefiniteLocations}" var="loc">
     <div class="card">
@@ -37,6 +38,10 @@
             <input type="datetime-local" id="localdate" name="date"/>
         </div>
     </div>
+    <div class="create-event">
+        <input type="button" id="create-race" name="create"/>
+    </div>
+    </form:form>
     <a href="/">Главная</a>
 </div>
 <%@ include file="footer.jsp" %>
