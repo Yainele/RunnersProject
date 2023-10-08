@@ -52,11 +52,13 @@ public class DefiniteLocationService{
         if (userName == null){
             return false;
         }
+        User user = userRepository.findByUsername(userName);
         definiteLocation.setLocationStatus(LocationStatus.USER_LOCATION);
         definiteLocation.setLocationImage(null);
-        definiteLocation.setUserId(userRepository.findByUsername(userName));
-
+        definiteLocation.setUserId(user);
+        user.setLocationId(definiteLocation);
         locationRepository.save(definiteLocation);
+        userRepository.update(definiteLocation.getLocationId(), user.getId());
         return true;
     }
 

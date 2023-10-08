@@ -23,8 +23,15 @@ public class User implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
+    private Long locationId;
 
     public User() {
+    }
+
+    public void setLocationId(DefiniteLocation definiteLocation) {
+        if(definiteLocation != null){
+            this.locationId = definiteLocation.getLocationId();
+        }
     }
 
     public Long getId() {
