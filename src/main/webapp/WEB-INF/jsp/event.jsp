@@ -13,6 +13,7 @@
 <body>
 <%@ include file="header.jsp" %>
 <div class="content-wrapper">
+    <div class="pick-location">
     <c:forEach items="${allDefiniteLocations}" var="loc">
     <div class="card">
         <div class="card-content">
@@ -30,6 +31,11 @@
         </div>
         <input type="radio" id="own_location"/>
         <label for="radioButton"></label>
+    </div>
+        <div class="pick-time">
+            <label for="localdate">Дата и время: </label>
+            <input type="datetime-local" id="localdate" name="date"/>
+        </div>
     </div>
     <a href="/">Главная</a>
 </div>

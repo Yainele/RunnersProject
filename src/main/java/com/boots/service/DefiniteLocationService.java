@@ -49,6 +49,9 @@ public class DefiniteLocationService{
     }
     public boolean saveCustomLocation(DefiniteLocation definiteLocation) {
         String userName = getCurrentUsername();
+        if (userName == null){
+            return false;
+        }
         definiteLocation.setLocationStatus(LocationStatus.USER_LOCATION);
         definiteLocation.setLocationImage(null);
         definiteLocation.setUserId(userRepository.findByUsername(userName));
