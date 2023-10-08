@@ -13,7 +13,7 @@
 <body>
 <%@ include file="header.jsp" %>
 <div class="content-wrapper">
-    <form:form method="POST" modelAttribute="race_form">
+    <form:form method="POST" modelAttribute="race_form" action="/create_race">
     <div class="pick-location">
     <c:forEach items="${allDefiniteLocations}" var="loc">
     <div class="card">
@@ -22,7 +22,7 @@
             <p>${loc.getLocationDescription()}</p>
             <a href=" https://yandex.ru/maps/?pt=${loc.getLongitude()},${loc.getLatitude()}z=18&l=map" target="_blank">Посмотреть точку старта локации</a>
         </div>
-        <input type="radio" id="radioButton" />
+        <input type="radio" id="radioButton" name="locationId" value="location_${loc.getLocationId()}" />
         <label for="radioButton"></label>
     </div>
         </c:forEach>
@@ -30,16 +30,14 @@
         <div class="card-content">
             <a href="/creat_location">Создать собственную локацию</a>
         </div>
-        <input type="radio" id="own_location"/>
-        <label for="radioButton"></label>
     </div>
         <div class="pick-time">
             <label for="localdate">Дата и время: </label>
-            <input type="datetime-local" id="localdate" name="date"/>
+            <input type="datetime-local" id="localdate" name="userStartTime"/>
         </div>
     </div>
     <div class="create-event">
-        <input type="button" id="create-race" name="create"/>
+        <button class="floating-button" type="submit">создать забег</button>
     </div>
     </form:form>
     <a href="/">Главная</a>
