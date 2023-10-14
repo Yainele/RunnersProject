@@ -1,6 +1,7 @@
 package com.boots.event.race;
 
 import com.boots.entity.User;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.Instant;
@@ -14,7 +15,7 @@ public class Race {
     private Long id;
 
     private RaceStatus raceStatus;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Instant userStartTime;
 
     private Long userId;

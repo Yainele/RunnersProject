@@ -1,5 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
+
+<%
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -13,7 +18,7 @@
 <body>
 <%@ include file="header.jsp" %>
 <div class="content-wrapper">
-    <form:form method="POST" modelAttribute="race_form" action="/create_race">
+    <form method="POST" modelAttribute="race_form" action="/create_race">
     <div class="pick-location">
     <c:forEach items="${allDefiniteLocations}" var="loc">
     <div class="card">
@@ -22,7 +27,7 @@
             <p>${loc.getLocationDescription()}</p>
             <a href=" https://yandex.ru/maps/?pt=${loc.getLongitude()},${loc.getLatitude()}z=18&l=map" target="_blank">Посмотреть точку старта локации</a>
         </div>
-        <input type="radio" id="radioButton" name="locationId" value="location_${loc.getLocationId()}" />
+        <input type="radio" id="radioButton" name="locationId" value=${loc.getLocationId()} />
         <label for="radioButton"></label>
     </div>
         </c:forEach>

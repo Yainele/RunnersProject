@@ -56,9 +56,7 @@ public class DefiniteLocationService{
         definiteLocation.setLocationStatus(LocationStatus.USER_LOCATION);
         definiteLocation.setLocationImage(null);
         definiteLocation.setUserId(user);
-        user.setLocationId(definiteLocation);
         locationRepository.save(definiteLocation);
-        userRepository.update(definiteLocation.getLocationId(), user.getId());
         return true;
     }
 

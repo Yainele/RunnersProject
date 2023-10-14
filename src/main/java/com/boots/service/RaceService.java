@@ -1,8 +1,5 @@
 package com.boots.service;
 
-import com.boots.entity.User;
-import com.boots.event.DefiniteLocation;
-import com.boots.event.LocationStatus;
 import com.boots.event.race.Race;
 import com.boots.repository.LocationRepository;
 import com.boots.repository.RaceRepository;
@@ -10,7 +7,9 @@ import com.boots.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RaceService {
 
     @Autowired
@@ -32,10 +31,9 @@ public class RaceService {
         if (userName == null){
             return false;
         }
-
         race.setUserId(userRepository.findByUsername(userName));
 
-
+        raceRepository.save(race);
         return true;
     }
     /*
