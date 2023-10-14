@@ -15,8 +15,8 @@ public class Race {
     private Long id;
 
     private RaceStatus raceStatus;
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-    private Instant userStartTime;
+    @DateTimeFormat(pattern = "dd-MM-yyyy'T'HH:mm")
+    private String userStartTime;
 
     private Long userId;
 
@@ -48,11 +48,11 @@ public class Race {
         return userId;
     }
 
-    public Instant getUserStartTime() {
+    public String getUserStartTime() {
         return userStartTime;
     }
 
-    public void setUserStartTime(Instant userStartTime) {
+    public void setUserStartTime(String userStartTime) {
         this.userStartTime = userStartTime;
     }
 

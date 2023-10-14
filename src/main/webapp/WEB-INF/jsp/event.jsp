@@ -3,7 +3,7 @@
 <%@ page import="java.time.format.DateTimeFormatter" %>
 
 <%
-    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy'T'HH:mm");
 %>
 
 <!DOCTYPE html>

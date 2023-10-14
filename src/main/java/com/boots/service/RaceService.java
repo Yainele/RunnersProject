@@ -1,6 +1,7 @@
 package com.boots.service;
 
 import com.boots.event.race.Race;
+import com.boots.event.race.RaceStatus;
 import com.boots.repository.LocationRepository;
 import com.boots.repository.RaceRepository;
 import com.boots.repository.UserRepository;
@@ -32,7 +33,7 @@ public class RaceService {
             return false;
         }
         race.setUserId(userRepository.findByUsername(userName));
-
+        race.setRaceStatus(RaceStatus.AWAITS_EXECUTION);
         raceRepository.save(race);
         return true;
     }
