@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in with your account</title>
-    <link rel="stylesheet" href="../../resources/css/registration.css">
+    <link rel="stylesheet" href="../../resources/css/race.css">
 </head>
 
 <body>
@@ -17,8 +17,11 @@
     <main>
             <div class="card">
                 <div class="card-content">
-                    <H2 name="title">${race_form_object.getRaceStatus()}</H2>
-                    <option name="title">${race_form_object.getLocationId()}</option>
+                    <H3> Забег совершит - ${race_form_object.getUserId()}</H3>
+                    <H4> Время забега - ${race_form_object.getUserStartTime()}</H4>
+
+                    <H4> статус забега - ${race_form_object.getRaceStatus()}</H4>
+                    <H4> локация - ${race_form_object.getLocationId()}</h4>
 
                 </div>
             </div>
