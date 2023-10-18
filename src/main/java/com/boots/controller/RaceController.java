@@ -14,13 +14,17 @@ public class RaceController {
     @Autowired
     private RaceService raceService;
     @PostMapping("/create_race")
-    String createRace (@ModelAttribute("race_form")Race race, Model model){
+    String createRace(@ModelAttribute("race_form")Race race, Model model) {
         model.addAttribute("race_form", raceService.saveRace(race));
-        return "event";
-    }
-    @GetMapping("/race")
-    String getRace (Model model){
-        model.addAttribute("race_form_object", raceService.getRace());
         return "race";
     }
+    @GetMapping("/race")
+    String getRace(Race race, Model model) {
+        model.addAttribute("race_form_object", raceService.getRace());
+        model.addAttribute("userForRace_form_object", raceService.getUserForRace());
+        model.addAttribute("locationForRace_form_object", raceService.getLocationById(race));
+        return "race";
+    }
+
+
 }

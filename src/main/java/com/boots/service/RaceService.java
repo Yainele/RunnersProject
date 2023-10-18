@@ -1,6 +1,7 @@
 package com.boots.service;
 
 import com.boots.entity.User;
+import com.boots.event.DefiniteLocation;
 import com.boots.event.race.Race;
 import com.boots.event.race.RaceStatus;
 import com.boots.repository.LocationRepository;
@@ -44,10 +45,22 @@ public class RaceService {
         raceRepository.save(race);
         return true;
     }
+
      public Race getRace(){
          String userName = getCurrentUsername();
          User user = userRepository.findByUsername(userName);
-         return em.createQuery("SELECT r FROM t_race r WHERE r.USER_id = :user_id", Race.class).setParameter("user_id", user.getId()).getSingleResult();
+         return em.createQuery("SELECT r FROM Race r WHERE r.userId = :user_id", Race.class)
+                 .setParameter("user_id", user.getId()).getSingleResult();
+     }
+
+     public DefiniteLocation getLocationById(Race race){
+         return em.createQuery("SELECT r FROM DefiniteLocation r WHERE r.locationId = :location_id", DefiniteLocation.class)
+                 .setParameter("location_id", race.getLocationId()).getSingleResult();
+     }
+
+     public User getUserForRace(){
+         String userName = getCurrentUsername();
+         return userRepository.findByUsername(userName);
      }
 
 
