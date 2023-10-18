@@ -1,5 +1,6 @@
 package com.boots.service;
 
+import com.boots.entity.User;
 import com.boots.event.race.Race;
 import com.boots.event.race.RaceStatus;
 import com.boots.repository.LocationRepository;
@@ -10,8 +11,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 @Service
 public class RaceService {
+
+    @PersistenceContext
+    private EntityManager em;
 
     @Autowired
     LocationRepository locationRepository;
@@ -37,6 +44,14 @@ public class RaceService {
         raceRepository.save(race);
         return true;
     }
+     public Race getRace(){
+         String userName = getCurrentUsername();
+         User user = userRepository.findByUsername(userName);
+         return em.createQuery("SELECT r FROM t_race r WHERE r.USER_id = :user_id", Race.class).setParameter("user_id", user.getId()).getSingleResult();
+     }
+
+
+
     /*
     private void updateRaceStatus(Race race){
         boolean isEpicDone = true;

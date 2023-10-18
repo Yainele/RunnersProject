@@ -6,6 +6,7 @@ import com.boots.service.RaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 @Controller
@@ -16,5 +17,10 @@ public class RaceController {
     String createRace (@ModelAttribute("race_form")Race race, Model model){
         model.addAttribute("race_form", raceService.saveRace(race));
         return "event";
+    }
+    @GetMapping("/race")
+    String getRace (@ModelAttribute("race_form") Model model){
+        model.addAttribute("race_form", raceService.getRace());
+        return "race";
     }
 }
