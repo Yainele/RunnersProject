@@ -40,10 +40,20 @@ public class RaceService {
         if (userName == null){
             return false;
         }
+        String startTime = race.getUserStartTime();
+        race.setUserStartTime(refactorStartTime(startTime));
         race.setUserId(userRepository.findByUsername(userName));
         race.setRaceStatus(RaceStatus.AWAITS_EXECUTION);
         raceRepository.save(race);
+
         return true;
+    }
+    public String refactorStartTime(String startTime){
+        StringBuilder stringBuilder = new StringBuilder(startTime);
+        if (stringBuilder.length() != 0) {
+            stringBuilder.replace(stringBuilder.length() - 6, stringBuilder.length() - 5 , " ");
+        }
+        return stringBuilder.toString();
     }
 
      public Race getRace(){
@@ -62,10 +72,26 @@ public class RaceService {
          String userName = getCurrentUsername();
          return userRepository.findByUsername(userName);
      }
+/*
+     public String refactorRaceStatus(RaceStatus raceStatus){
+        switch (raceStatus){
+            case AWAITS_EXECUTION:
+                return "Ожидает завершения!";
+            case NOT_FINISHED:
+                return "Не финишировал!";
+            case  FINISHED:
+                return "Финишировал!";
+            case  CANCELED:
+                return "Отменен!";
+            case MODERATED:
+                return  "Находится на модерации!";
+            default:
+                return "Статус не определен!";
 
+        }
+     }
 
-
-    /*
+    /*, CANCELED, MODERATED, IN_LIMBO
     private void updateRaceStatus(Race race){
         boolean isEpicDone = true;
         boolean isEpicNew = true;

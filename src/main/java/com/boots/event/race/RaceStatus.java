@@ -1,6 +1,6 @@
 package com.boots.event.race;
 
-public enum RaceStatus {AWAITS_EXECUTION ,NOT_FINISHED, FINISHED, CANCELED, MODERATED, IN_LIMBO}
+public enum RaceStatus {AWAITS_EXECUTION ,NOT_FINISHED, FINISHED, CANCELED, MODERATED}
 /*
  Создал забег - статус ожидает выполнения AWAITS_EXECUTION
  Пробежал - отправил на модерацию: статус модерации (время, км) MODERATED
