@@ -19,7 +19,8 @@ public class RaceController {
         return "race";
     }
     @GetMapping("/race")
-    String getRace(Race race, Model model) {
+    String getRace(Model model) {
+        Race race = raceService.getRace();
         model.addAttribute("race_form_object", raceService.getRace());
         model.addAttribute("userForRace_form_object", raceService.getUserForRace());
         model.addAttribute("locationForRace_form_object", raceService.getLocationById(race));

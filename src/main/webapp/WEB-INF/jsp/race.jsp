@@ -17,11 +17,10 @@
     <main>
             <div class="card">
                 <div class="card-content">
-                    <H3> Забег совершит - ${race_form_object.getUserId()}</H3>
+                    <H3> Забег совершит - ${userForRace_form_object.getUsername()}</H3>
                     <H4> Время забега - ${race_form_object.getUserStartTime()}</H4>
-
                     <H4> статус забега - ${race_form_object.getRaceStatus()}</H4>
-                    <H4> локация - ${race_form_object.getLocationId()}</h4>
+                    <H4> локация - ${locationForRace_form_object.getLocationName()}</h4>
 
                 </div>
             </div>
