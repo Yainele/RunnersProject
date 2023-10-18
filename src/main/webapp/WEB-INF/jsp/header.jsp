@@ -11,5 +11,6 @@
 <header class="header">
     <p style="font-size: 30px; margin: 0; padding: 10px 1em;">100km</p>
     <a href="${pageContext.request.contextPath}/news">главная страница</a>
+    <a href="${pageContext.request.contextPath}/race">мой забег</a>
 </header>
 </html>
