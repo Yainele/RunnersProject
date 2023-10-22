@@ -14,12 +14,14 @@
 <body>
 <div class="content-wrapper">
     <%@ include file="header.jsp" %>
+    <%@ include file="countdown.jsp" %>
     <main>
+
             <div class="card">
                 <div class="card-content">
                     <H3> Забег совершит - ${userForRace_form_object.getUsername()}</H3>
                     <H4> Время забега - ${race_form_object.getUserStartTime()}</H4>
-                    <H4> статус забега - ${race_form_object.getRaceStatus()}</H4>
+                    <H4> статус забега - ${race_form_object.refactorRaceStatus()}</H4>
                     <H4> локация - ${locationForRace_form_object.getLocationName()}</h4>
 
                 </div>

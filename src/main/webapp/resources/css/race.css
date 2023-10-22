@@ -56,9 +56,10 @@
     display: flex;
     text-align: center;
     justify-content: center;
-    margin: 10px;
+    margin: 10px auto;
+    width: 30%;
+    max-width: 500px;
     position: relative;
-    left: 30%;
 }
 
 

@@ -14,6 +14,9 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Service
 public class RaceService {
@@ -37,7 +40,7 @@ public class RaceService {
 
     public boolean saveRace(Race race) {
         String userName = getCurrentUsername();
-        if (userName == null){
+        if (userName == null) {
             return false;
         }
         String startTime = race.getUserStartTime();
@@ -48,48 +51,53 @@ public class RaceService {
 
         return true;
     }
-    public String refactorStartTime(String startTime){
+
+    public String refactorStartTime(String startTime) {
         StringBuilder stringBuilder = new StringBuilder(startTime);
         if (stringBuilder.length() != 0) {
-            stringBuilder.replace(stringBuilder.length() - 6, stringBuilder.length() - 5 , " ");
+            stringBuilder.replace(stringBuilder.length() - 6, stringBuilder.length() - 5, " ");
         }
         return stringBuilder.toString();
     }
 
-     public Race getRace(){
-         String userName = getCurrentUsername();
-         User user = userRepository.findByUsername(userName);
-         return em.createQuery("SELECT r FROM Race r WHERE r.userId = :user_id", Race.class)
-                 .setParameter("user_id", user.getId()).getSingleResult();
-     }
-
-     public DefiniteLocation getLocationById(Race race){
-         return em.createQuery("SELECT r FROM DefiniteLocation r WHERE r.locationId = :location_id", DefiniteLocation.class)
-                 .setParameter("location_id", race.getLocationId()).getSingleResult();
-     }
-
-     public User getUserForRace(){
-         String userName = getCurrentUsername();
-         return userRepository.findByUsername(userName);
-     }
-/*
-     public String refactorRaceStatus(RaceStatus raceStatus){
-        switch (raceStatus){
-            case AWAITS_EXECUTION:
-                return "Ожидает завершения!";
-            case NOT_FINISHED:
-                return "Не финишировал!";
-            case  FINISHED:
-                return "Финишировал!";
-            case  CANCELED:
-                return "Отменен!";
-            case MODERATED:
-                return  "Находится на модерации!";
-            default:
-                return "Статус не определен!";
-
+    public String refactorStartTimeToBack(String startTime) {
+        StringBuilder stringBuilder = new StringBuilder(startTime);
+        if (stringBuilder.length() != 0) {
+            stringBuilder.replace(stringBuilder.length() - 6, stringBuilder.length() - 5, "T");
         }
-     }
+        return stringBuilder.toString();
+    }
+
+    public Race getRace() {
+        String userName = getCurrentUsername();
+        User user = userRepository.findByUsername(userName);
+        return em.createQuery("SELECT r FROM Race r WHERE r.userId = :user_id", Race.class)
+                .setParameter("user_id", user.getId()).getSingleResult();
+    }
+
+    public DefiniteLocation getLocationById(Race race) {
+        return em.createQuery("SELECT r FROM DefiniteLocation r WHERE r.locationId = :location_id", DefiniteLocation.class)
+                .setParameter("location_id", race.getLocationId()).getSingleResult();
+    }
+
+    public User getUserForRace() {
+        String userName = getCurrentUsername();
+        return userRepository.findByUsername(userName);
+    }
+
+    public Duration countdown(Race race){
+        String timeString = race.getUserStartTime();
+        timeString = refactorStartTimeToBack(timeString);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+        LocalDateTime dateTime = LocalDateTime.parse(timeString, formatter);
+
+
+        return Duration.between(LocalDateTime.now(), dateTime);
+    }
+
+/*
+
 
     /*, CANCELED, MODERATED, IN_LIMBO
     private void updateRaceStatus(Race race){
@@ -122,7 +130,6 @@ public class RaceService {
         }
     }
      */
-
 
 
 }

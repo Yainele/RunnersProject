@@ -29,7 +29,23 @@ public class Race {
 
     public Race() {
     }
+    public String refactorRaceStatus(){
+        switch (raceStatus){
+            case AWAITS_EXECUTION:
+                return "Ожидает завершения!";
+            case NOT_FINISHED:
+                return "Не финишировал!";
+            case  FINISHED:
+                return "Финишировал!";
+            case  CANCELED:
+                return "Отменен!";
+            case MODERATED:
+                return  "Находится на модерации!";
+            default:
+                return "Статус не определен!";
 
+        }
+    }
     public Long getLocationId() {
         return locationId;
     }
