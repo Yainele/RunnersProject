@@ -44,8 +44,8 @@
     <div class="create-event">
         <button class="floating-button" type="submit">создать забег</button>
     </div>
-    </form:form>
     <a href="/">Главная</a>
+    </form>
 </div>
 <%@ include file="footer.jsp" %>
 </body>
