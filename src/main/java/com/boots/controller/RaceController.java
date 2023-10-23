@@ -45,7 +45,7 @@ public class RaceController {
         long minutes = duration.toMinutes() % 60;
         long seconds = duration.getSeconds() % 60;
 
-        return String.format("%d дней, %d часов, %d минут, %d секунд",
+        return String.format("%d дней \n, %d часов \n, %d минут \n, %d секунд",
                                  days, hours, minutes, seconds);
     }
 

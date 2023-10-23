@@ -7,23 +7,22 @@
     <title>Обратный отсчет</title>
     <style>
         .countdown-wrapper {
-            background-color: #f8f8f8;
+            background-color: rgb(255, 255, 255);
             border: 2px solid #ddd;
+            height: 250px;
             border-radius: 10px;
-            padding: 50px;
             max-width: 300px;
-            margin: 0 auto;
-            text-align: center;
         }
 
         .countdown {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: bold;
             color: #333;
+            padding-top: 30px;
         }
 
         .countdown-label {
-            font-size: 18px;
+            font-size: 15px;
             font-weight: bold;
             color: #333;
         }
