@@ -18,7 +18,7 @@
 <body>
 <%@ include file="header.jsp" %>
 <div class="content-wrapper">
-    <form method="POST" modelAttribute="race_form" action="/create_race">
+    <form method="POST" modelAttribute="race_form" action="/save_race">
     <div class="pick-location">
     <c:forEach items="${allDefiniteLocations}" var="loc">
     <div class="card">
