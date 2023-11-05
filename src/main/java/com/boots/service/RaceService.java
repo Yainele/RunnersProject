@@ -33,6 +33,8 @@ public class RaceService {
     @Autowired
     RaceRepository raceRepository;
 
+    Race receivedRace;
+
     public String getCurrentUsername() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return auth.getName();
@@ -46,9 +48,9 @@ public class RaceService {
         String startTime = race.getUserStartTime();
         race.setUserStartTime(refactorStartTime(startTime));
         race.setUserId(userRepository.findByUsername(userName));
-        race.setRaceStatus(RaceStatus.AWAITS_EXECUTION);
+        race.setRaceStatus(RaceStatus.WAITING_TO_START);
         raceRepository.save(race);
-
+        receivedRace = race;
         return true;
     }
 
@@ -85,51 +87,25 @@ public class RaceService {
         return userRepository.findByUsername(userName);
     }
 
-    public Duration countdown(Race race){
-        String timeString = race.getUserStartTime();
+    public Duration countdown(){
+        String timeString = receivedRace.getUserStartTime();
         timeString = refactorStartTimeToBack(timeString);
 
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
         LocalDateTime dateTime = LocalDateTime.parse(timeString, formatter);
-
-
+        if(receivedRace.getRaceStatus() == RaceStatus.AWAITS_EXECUTION){
+            return Duration.between(LocalDateTime.now().minusHours(14), receivedRace.getActualStartTime());
+        }
         return Duration.between(LocalDateTime.now(), dateTime);
     }
 
-/*
-
-
-    /*, CANCELED, MODERATED, IN_LIMBO
-    private void updateRaceStatus(Race race){
-        boolean isEpicDone = true;
-        boolean isEpicNew = true;
-
-        for (Subtask subtask : epic.getSubtasksInEpic()) {
-            if(subtask.getStatus() != Status.DONE){
-                isEpicDone = false;
-                break;
-            }
-        }
-
-        for (Subtask subtask : epic.getSubtasksInEpic()) {
-            if(subtask.getStatus() != Status.NEW){
-                isEpicNew = false;
-                break;
-            }
-        }
-
-        if(epic.getSubtasksInEpic().isEmpty()){
-            epic.setStatus(Status.NEW);
-        } else if (isEpicNew) {
-            epic.setStatus(Status.NEW);
-        } else if (isEpicDone) {
-            epic.setStatus(Status.DONE);
-        }
-        else {
-            epic.setStatus(Status.IN_PROGRESS);
-        }
+    public boolean startRace(){
+        RaceStatus raceStatus  = RaceStatus.AWAITS_EXECUTION;
+            receivedRace.setActualStartTime(LocalDateTime.now());
+            receivedRace.setRaceStatus(raceStatus);
+            raceRepository.updateActualStartTime(receivedRace.getActualStartTime(), receivedRace.getId());
+            raceRepository.updateRaceStatus(raceStatus,receivedRace.getId());
+        return true;
     }
-     */
-
 
 }

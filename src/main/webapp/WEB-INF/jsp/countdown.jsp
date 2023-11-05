@@ -35,16 +35,22 @@
     </div>
 
     <script>
-        function updateCountdown() {
-            fetch('/countdown')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('countdown').innerHTML = data;
-                    setTimeout(updateCountdown, 500);
-                });
-        }
+       function updateCountdown() {
+           fetch('/countdown')
+               .then(response => response.text())
+               .then(data => {
+                   let countdownElement = document.getElementById('countdown');
+                   countdownElement.innerHTML = data;
 
-        updateCountdown();
+                   if (data === '0 дней, 0 часов, 0 минут, 0 секунд') {
+                       clearTimeout(countdownTimer);
+                   } else {
+                       setTimeout(updateCountdown, 500);
+                   }
+               });
+       }
+
+       let countdownTimer = setTimeout(updateCountdown, 500);
     </script>
 </body>
 </html>

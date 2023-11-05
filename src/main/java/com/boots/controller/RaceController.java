@@ -18,7 +18,6 @@ public class RaceController {
     @Autowired
     private RaceService raceService;
 
-    Race receivedRace = null;
     @PostMapping("/save_race")
     String createRace(@ModelAttribute("race_form")Race race, Model model) {
         model.addAttribute("race_form", raceService.saveRace(race));
@@ -31,22 +30,30 @@ public class RaceController {
         model.addAttribute("race_form_object", raceService.getRace());
         model.addAttribute("userForRace_form_object", raceService.getUserForRace());
         model.addAttribute("locationForRace_form_object", raceService.getLocationById(race));
-        receivedRace = race;
         return "race";
     }
 
     @GetMapping("/countdown")
     @ResponseBody
     public String countdown() {
-        Duration duration = raceService.countdown(receivedRace);
+        Duration duration = raceService.countdown();
 
         long days = duration.toDays();
         long hours = duration.toHours() % 24;
         long minutes = duration.toMinutes() % 60;
         long seconds = duration.getSeconds() % 60;
-
+        if(days == 0){
+            return String.format("%d часов \n, %d минут \n, %d секунд",
+                                    hours, minutes, seconds);
+        }
         return String.format("%d дней \n, %d часов \n, %d минут \n, %d секунд",
                                  days, hours, minutes, seconds);
+    }
+
+    @PostMapping("/start_race")
+    public String startRace(Model model) {
+        model.addAttribute("start_race_form", raceService.startRace());
+        return "redirect:/race";
     }
 
 }

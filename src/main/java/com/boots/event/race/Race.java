@@ -4,7 +4,7 @@ import com.boots.entity.User;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "t_Race")
@@ -18,7 +18,19 @@ public class Race {
     @DateTimeFormat(pattern = "dd-MM-yyyy'T'HH:mm")
     private String userStartTime;
 
+    private LocalDateTime actualStartTime;
+
+    public LocalDateTime getActualStartTime() {
+        return actualStartTime;
+    }
+
+    public void setActualStartTime(LocalDateTime actualStartTime) {
+        this.actualStartTime = actualStartTime;
+    }
+
     private Long userId;
+
+
 
     private Long locationId;
 
@@ -31,6 +43,8 @@ public class Race {
     }
     public String refactorRaceStatus(){
         switch (raceStatus){
+            case WAITING_TO_START:
+                return "Ожидает старта!";
             case AWAITS_EXECUTION:
                 return "Ожидает завершения!";
             case NOT_FINISHED:

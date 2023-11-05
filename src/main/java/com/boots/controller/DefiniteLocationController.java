@@ -19,6 +19,10 @@ public class DefiniteLocationController {
     @Autowired
     private DefiniteLocationService DefiniteLocationService;
 
+    @Autowired
+    private RaceService raceService;
+
+
     @GetMapping("/creat_location")
     public String customLocation(Model model){
         DefiniteLocation definiteLocation = new DefiniteLocation();
@@ -31,11 +35,15 @@ public class DefiniteLocationController {
         return "event";
     }
     @PostMapping("/creat_location/add_location")
-    public String createCustomLocation(@ModelAttribute("LocationForm") @Valid DefiniteLocation locationForm, BindingResult bindingResult, Model model) {
+    public String createCustomLocation(@ModelAttribute("LocationForm") @Valid DefiniteLocation locationForm, Model model) {
         model.addAttribute("DefiniteLocation", DefiniteLocationService.saveCustomLocation(locationForm));
         return "add_location";
     }
-
+    @PostMapping("/race")
+    String createRace(@ModelAttribute("race_form") @Valid Race race, Model model) {
+        model.addAttribute("race_form", raceService.saveRace(race));
+        return "race";
+    }
 
 
 }
