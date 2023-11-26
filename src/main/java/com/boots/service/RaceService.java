@@ -42,18 +42,18 @@ public class RaceService {
         return auth.getName();
     }
 
-    public boolean saveRace(Race race) {
-        String userName = getCurrentUsername();
-        if (userName == null) {
-            return false;
+    public Race saveRace(Race race) {
+        if (race.getId() != null){
+            return race;
         }
+        String userName = getCurrentUsername();
         String startTime = race.getUserStartTime();
         race.setUserStartTime(refactorStartTime(startTime));
         race.setUserId(userRepository.findByUsername(userName));
         race.setRaceStatus(RaceStatus.WAITING_TO_START);
         raceRepository.save(race);
         receivedRace = race;
-        return true;
+        return race;
     }
 
     public String refactorStartTime(String startTime) {

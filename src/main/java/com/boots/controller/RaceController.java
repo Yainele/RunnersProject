@@ -8,6 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -20,8 +25,11 @@ public class RaceController {
     private RaceService raceService;
 
     @PostMapping("/save_race")
-    String createRace(@ModelAttribute("race_form")Race race, Model model) {
-        model.addAttribute("race_form", raceService.saveRace(race));
+    String createRace(@ModelAttribute("race_form")Race race, Model model, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Race new_race;
+        model.addAttribute("race_form", new_race = raceService.saveRace(race));
+        request.setAttribute("race_id", new_race.getId());
+        request.getServletContext().getRequestDispatcher("/race?id=").forward(request,response);
         return "save_race";
     }
 
@@ -31,7 +39,7 @@ public class RaceController {
         model.addAttribute("race_form_object", race);
         model.addAttribute("userForRace_form_object", raceService.getUserForRace());
         model.addAttribute("locationForRace_form_object", raceService.getLocationById(race));
-        return "race" + id;
+        return "race";
     }
 
     @GetMapping("/countdown")
