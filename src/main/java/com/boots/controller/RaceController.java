@@ -1,6 +1,7 @@
 package com.boots.controller;
 
 import com.boots.event.race.Race;
+import com.boots.event.race.RaceStatus;
 import com.boots.service.RaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,12 +26,12 @@ public class RaceController {
     }
 
     @GetMapping("/race")
-    String getRace(Model model) {
-        Race race = raceService.getRace();
-        model.addAttribute("race_form_object", raceService.getRace());
+    String getRace(@RequestParam Long id ,Model model) {
+        Race race = raceService.getRace(id);
+        model.addAttribute("race_form_object", race);
         model.addAttribute("userForRace_form_object", raceService.getUserForRace());
         model.addAttribute("locationForRace_form_object", raceService.getLocationById(race));
-        return "race";
+        return "race" + id;
     }
 
     @GetMapping("/countdown")
@@ -38,11 +39,16 @@ public class RaceController {
     public String countdown() {
         Duration duration = raceService.countdown();
 
+        long days = duration.toDays();
         long hours = duration.toHours() % 24;
         long minutes = duration.toMinutes() % 60;
         long seconds = duration.getSeconds() % 60;
+        if(raceService.receivedRace.getRaceStatus() == RaceStatus.AWAITS_EXECUTION){
             return String.format("%d часов, %d минут, %d секунд",
-                                    hours, minutes, seconds);
+                                      hours, minutes, seconds);
+        }
+            return String.format("%d дней ,%d часов, %d минут, %d секунд",
+                                     days ,hours, minutes, seconds);
     }
 
     @PostMapping("/start_race")

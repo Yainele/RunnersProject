@@ -33,7 +33,9 @@ public class RaceService {
     @Autowired
     RaceRepository raceRepository;
 
-    Race receivedRace;
+   public Race receivedRace;
+
+
 
     public String getCurrentUsername() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -70,11 +72,9 @@ public class RaceService {
         return stringBuilder.toString();
     }
 
-    public Race getRace() {
-        String userName = getCurrentUsername();
-        User user = userRepository.findByUsername(userName);
+    public Race getRace(Long id) {
         return em.createQuery("SELECT r FROM Race r WHERE r.userId = :user_id", Race.class)
-                .setParameter("user_id", user.getId()).getSingleResult();
+                .setParameter("user_id", id).getSingleResult();
     }
 
     public DefiniteLocation getLocationById(Race race) {
