@@ -38,16 +38,11 @@ public class RaceController {
     public String countdown() {
         Duration duration = raceService.countdown();
 
-        long days = duration.toDays();
         long hours = duration.toHours() % 24;
         long minutes = duration.toMinutes() % 60;
         long seconds = duration.getSeconds() % 60;
-        if(days == 0){
-            return String.format("%d часов \n, %d минут \n, %d секунд",
+            return String.format("%d часов, %d минут, %d секунд",
                                     hours, minutes, seconds);
-        }
-        return String.format("%d дней \n, %d часов \n, %d минут \n, %d секунд",
-                                 days, hours, minutes, seconds);
     }
 
     @PostMapping("/start_race")
