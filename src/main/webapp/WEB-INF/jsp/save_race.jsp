@@ -1,4 +1,5 @@
+
 <%
-    String redirectURL = "/race?id=";
-    response.sendRedirect(redirectURL);
+//   String redirectURL = "/race";
+//    response.sendRedirect(redirectURL);
 %>

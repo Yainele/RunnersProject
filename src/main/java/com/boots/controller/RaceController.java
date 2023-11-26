@@ -30,16 +30,17 @@ public class RaceController {
         model.addAttribute("race_form", new_race = raceService.saveRace(race));
         request.setAttribute("race_id", new_race.getId());
         request.getServletContext().getRequestDispatcher("/race?id=").forward(request,response);
-        return "save_race";
+        return "forward:/race?id=" + new_race.getId();
     }
 
     @GetMapping("/race")
-    String getRace(@RequestParam Long id ,Model model) {
+    String getRace(@RequestParam Long id ,Model model, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Race race = raceService.getRace(id);
         model.addAttribute("race_form_object", race);
         model.addAttribute("userForRace_form_object", raceService.getUserForRace());
         model.addAttribute("locationForRace_form_object", raceService.getLocationById(race));
-        return "race";
+        request.getServletContext().getRequestDispatcher("/race?id=").forward(request,response);
+        return "/race?id=" + id;
     }
 
     @GetMapping("/countdown")

@@ -17,6 +17,7 @@ import javax.persistence.PersistenceContext;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Service
 public class RaceService {
@@ -41,10 +42,16 @@ public class RaceService {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return auth.getName();
     }
+    public Long getCurrentUserId(){
+        User user = em.createQuery("SELECT u FROM User u WHERE u.username = :username", User.class)
+                .setParameter("username", getCurrentUsername()).getSingleResult();
+        return user.getId();
+    }
 
     public Race saveRace(Race race) {
-        if (race.getId() != null){
-            return race;
+        List<Race> races = getUserRaces(getCurrentUserId());
+        if (races.size() != 0){
+            return races.get(0);
         }
         String userName = getCurrentUsername();
         String startTime = race.getUserStartTime();
@@ -73,8 +80,12 @@ public class RaceService {
     }
 
     public Race getRace(Long id) {
+        return em.createQuery("SELECT r FROM Race r WHERE r.id = :id", Race.class)
+                .setParameter("id", id).getSingleResult();
+    }
+    public List<Race> getUserRaces(Long user_id){
         return em.createQuery("SELECT r FROM Race r WHERE r.userId = :user_id", Race.class)
-                .setParameter("user_id", id).getSingleResult();
+                .setParameter("user_id", user_id).getResultList();
     }
 
     public DefiniteLocation getLocationById(Race race) {
