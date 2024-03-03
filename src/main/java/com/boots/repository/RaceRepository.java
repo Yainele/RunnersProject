@@ -1,6 +1,5 @@
 package com.boots.repository;
 
-import com.boots.event.DefiniteLocation;
 import com.boots.event.race.Race;
 import com.boots.event.race.RaceStatus;
 import org.springframework.data.jpa.repository.JpaRepository;

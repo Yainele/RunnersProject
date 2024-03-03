@@ -1,6 +1,5 @@
 package com.boots.service;
 
-import com.boots.entity.Role;
 import com.boots.entity.User;
 import com.boots.event.DefiniteLocation;
 import com.boots.event.LocationStatus;
@@ -9,20 +8,11 @@ import com.boots.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ObjectUtils;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceUnit;
-import javax.transaction.Transactional;
-import java.sql.Driver;
-import java.sql.Statement;
-import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class DefiniteLocationService{
