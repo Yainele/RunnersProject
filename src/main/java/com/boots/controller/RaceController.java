@@ -27,10 +27,17 @@ public class RaceController {
     @PostMapping("/save_race")
     String createRace(@ModelAttribute("race_form")Race race, Model model, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Race new_race;
-        model.addAttribute("race_form", new_race = raceService.saveRace(race));
-        request.setAttribute("race_id", new_race.getId());
-        request.getServletContext().getRequestDispatcher("/race?id=").forward(request,response);
-        return "forward:/race?id=" + new_race.getId();
+        Long raceId = 0L;
+        if (raceService.getUserRaces(race.getUserId()).size() == 0) {
+            model.addAttribute("race_form", new_race = raceService.saveRace(race));
+            request.setAttribute("race_id", new_race.getId());
+            request.getServletContext().getRequestDispatcher("/race?id=").forward(request, response);
+            raceId = new_race.getId();
+        }
+        else {
+            raceId = raceService.getUserRaces(race.getUserId()).get(0).getId();
+        }
+        return "forward:/race?id=" + raceId;
     }
 
     @GetMapping("/race")
